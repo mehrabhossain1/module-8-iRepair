@@ -1,8 +1,20 @@
+import { NavLink } from 'react-router-dom';
+import { Button } from '../ui/button';
+
 const Navbar = () => {
   return (
-    <div>
-      <h1>This is Navbar component</h1>
-    </div>
+    <header className="h-16">
+      <nav className="w-full h-full max-w-[1220px] px-5 mx-auto bg-green-500 flex justify-between items-center">
+        <span className="text-3xl">iRepair</span>
+        <ul className="space-x-5">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <Button>
+            <NavLink to="/login">Login</NavLink>
+          </Button>
+        </ul>
+      </nav>
+    </header>
   );
 };
 
