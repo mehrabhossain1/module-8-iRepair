@@ -2,6 +2,8 @@ import Container from '@/components/Container';
 import { Button } from '@/components/ui/button';
 import macbook from '@/assets/images/macbook-exposed.png';
 
+// ctrl + x = del entire line
+
 const HeroSection = () => {
   return (
     <Container className="h-[calc(100vh-64px)] grid grid-cols-2 place-content-center">
