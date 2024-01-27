@@ -21,6 +21,21 @@ const introChildren = {
   visible: { opacity: 1, y: 0 },
 };
 
+const laptop = {
+  initial: { y: 0 },
+  animate: {
+    y: 20,
+    transition: {
+      y: {
+        duration: 2,
+        repeat: Infinity,
+        repeatType: 'reverse',
+        ease: 'easeInOut',
+      },
+    },
+  },
+};
+
 const HeroSection = () => {
   return (
     <Container className="h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 place-content-center">
@@ -45,13 +60,18 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      <div className="mt-10 w-3/4 lg:w-full mx-auto">
+      <motion.div
+        variants={laptop}
+        initial="initial"
+        animate="animate"
+        className="mt-10 w-3/4 lg:w-full mx-auto"
+      >
         <img
           className="-rotate-[35deg] h-[95%] object-contain"
           src={macbook}
           alt=""
         />
-      </div>
+      </motion.div>
     </Container>
   );
 };
