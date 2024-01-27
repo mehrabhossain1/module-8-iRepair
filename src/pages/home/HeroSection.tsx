@@ -10,13 +10,14 @@ const intro = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 2,
-      staggerChildren: 1,
+      duration: 0.5,
+      staggerChildren: 0.5,
+      delayChildren: 0.5,
     },
   },
 };
 const introChildren = {
-  hidden: { opacity: 0, y: -500 },
+  hidden: { opacity: 0, y: -200 },
   visible: { opacity: 1, y: 0 },
 };
 
