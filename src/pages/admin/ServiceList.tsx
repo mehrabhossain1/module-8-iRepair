@@ -1,18 +1,23 @@
-import { useEffect, useState } from 'react';
+import { getServices } from '@/api/admin/service/service.api';
+import { useQuery } from '@tanstack/react-query';
 
 const ServiceList = () => {
-  const [data, setData] = useState([]);
-  console.log(data);
+  const { data, isLoading } = useQuery({
+    queryKey: ['services'],
+    queryFn: getServices,
+  });
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/v1/services')
-      .then((res) => res.json())
-      .then((data) => setData(data.data));
-  }, []);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  console.log(data);
 
   return (
     <div>
-      <h1>This is ServiceList component</h1>
+      {data?.data?.map((item) => (
+        <p>{item.name}</p>
+      ))}
     </div>
   );
 };
