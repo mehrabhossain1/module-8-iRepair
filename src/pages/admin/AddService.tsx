@@ -1,9 +1,12 @@
 import { Button } from '@/components/ui/button';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FormEvent, useState } from 'react';
 
 const AddService = () => {
   const [serviceName, setServiceName] = useState('');
+
+  // ক্যাশ invalidate এর জন্য
+  const queryClient = useQueryClient();
 
   const { mutateAsync, isError, isSuccess } = useMutation({
     mutationFn: async (data) => {
@@ -15,7 +18,13 @@ const AddService = () => {
         body: JSON.stringify(data),
       });
     },
+
+    // ক্যাশ invalidate এর জন্য
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['services'] });
+    },
   });
+  // এখানে, Mutation এর পরে যখন success হচ্ছে তখন invalidateQueries করে দেও
 
   console.log({ isError, isSuccess });
 

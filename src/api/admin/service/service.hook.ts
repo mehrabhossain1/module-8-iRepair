@@ -18,6 +18,13 @@ export const useGetServices = () => {
 
       return services;
     },
+
+    // ক্যাশ ধরে রাখার টাইম, by default ৫ মিনিট
+    // gcTime: 5000,
+
+    // fresh অবস্থায় রাখে, এতক্খুন latest ডাটা দেখাবেনা
+    // staleTime: 30000,
+    // staleTime: Infinity -> এটার ফলে আর request করবেনা
   });
 
   return servicesData;
